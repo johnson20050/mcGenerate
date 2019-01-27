@@ -1,0 +1,39 @@
+# This is the decay file for the decay
+#    LambdaB -> Pc+ K-
+#               Pc+ -> JPsi p+
+
+# use Xi_cc*+ to be pentaquark, with spin 3-half and mass 4.380 GeV.
+Alias myPentaquark      Xi_cc*+
+Alias myAntiPentaquark  anti-Xi_cc*-
+# assign mass to old particle
+Particle myPentaquark      4.380 0.00
+Particle myAntiPentaquark  4.380 0.00
+
+Alias myLambdaB     Lambda_b0
+Alias myAntiLambdaB anti-Lambda_b0
+Alias myJPsi J/psi
+
+ChargeConj myLambdaB myAntiLambdaB
+ChargeConj myJPsi myJPsi
+ChargeConj myPentaquark myAntiPentaquark
+
+#
+Decay myLambdaB
+1.00    myPentaquark K-         PHSP;
+Enddecay
+Decay myAntiLambdaB
+1.00    myAntiPentaquark K+     PHSP;
+Enddecay
+#
+Decay myPentaquark
+1.00    myJPsi p+               PHSP;
+Enddecay
+Decay myAntiPentaquark
+1.00    myJPsi anti-p-          PHSP;
+Enddecay
+#
+Decay myJPsi
+1.00    mu+ mu-                 PHOTOS VLL;
+Enddecay
+#
+End
